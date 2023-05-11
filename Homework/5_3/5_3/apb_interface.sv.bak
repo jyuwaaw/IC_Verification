@@ -1,0 +1,20 @@
+interface apb_if(input logic pclk);
+    logic [31:0] prdata, pwdata;
+    logic [ 3:0] paddr;
+    logic pwrite, penable, psel, pready;
+    wire preset_n;
+
+clocking master_cb @(posedge pclk);
+    output paddr, pwrite, pwdata, psel, penable;
+    input prdata, pready;
+endclocking : master_cb
+
+clocking slave_cb @(posedge pclk);
+    input paddr, pwrite, pwdata, psel, penable;
+    output prdata, pready;
+endclocking : slave_cb
+
+modport master (clocking master_cb, output preset_n);
+modport slave (input preset_n,clocking slave_cb);
+
+endinterface //apb_if
