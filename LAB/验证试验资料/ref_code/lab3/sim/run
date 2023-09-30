@@ -1,0 +1,1 @@
+vcs -f file_list -sverilog -R -debug_all -l compile.log +incdir+../apb_env

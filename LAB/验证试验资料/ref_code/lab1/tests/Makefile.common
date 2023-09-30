@@ -1,0 +1,12 @@
+VCS_DEFOPTS  :=
+VOPT_DEFOPTS :=
+VSIM_DEFOPTS :=
+.PHONY: clean vcs_clean vsim_clean
+clean: vcs_clean vsim_clean
+	#
+vcs_clean:
+	rm -rf simv simv.* *.key DVEfiles* *.log *.vcd *.vpd csrc 
+	rm -rf verdiLog novas* nWaveLog *.fsdb
+vsim_clean:
+	rm -rf work vfast* transcript 
+
